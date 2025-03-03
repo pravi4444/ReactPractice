@@ -4,20 +4,13 @@ import logo from "./assets/adcb.jpg";
 
 const App = () => {
   const [items, setItems] = useState([]);
+  const [sortType, setSortType] = useState("a");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [resetData, setResetData] = useState(false);
 
   function getDate() {
     const d = new Date();
     return d.getFullYear();
-  }
-  function userSort() {
-    console.log("============", items);
-    setItems(items.sort((a, b) => a.user - b.user));
-    console.log("============", items);
-  }
-  function idSort() {
-    console.log("============", items);
-    setItems(items.sort((a, b) => a.id - b.id));
-    console.log("============", items);
   }
 
   const openExternalWebsite = () => {
@@ -41,23 +34,54 @@ const App = () => {
           <p className="p-2 h-1rem text-black text-left">
             List dislay using React-Window and Tailwinds css
           </p>
+          {/* <input
+            type="text"
+            value={searchQuery}
+            className="text-black"
+            onChange={(e) =>
+              e.target.value.length > 0
+                ? setSearchQuery(e.target.value)
+                : setItems(items)
+            }
+          /> */}
         </div>
 
-        <MainList onShow={() => userSort()} items={items} setItems={setItems} />
+        <MainList
+          items={items}
+          setItems={setItems}
+          sortType={sortType}
+          searchString={searchQuery}
+          resetData={resetData}
+        />
       </main>
       <aside className="dashboard-sidebar">
         <div>
           <nav>
             <ul>
-              <li onClick={userSort}>
+              <li
+                onClick={() => {
+                  setSortType("user");
+                }}
+              >
                 <a>User Sort</a>
               </li>
-              <li onClick={idSort}>
+              <li
+                onClick={() => {
+                  setSortType("id");
+                }}
+              >
                 <a>ID Sort</a>
               </li>
               <li onClick={openExternalWebsite}>
                 <a>Adcb</a>
               </li>
+              {/* <li
+                onClick={() => {
+                  setResetData(true);
+                }}
+              >
+                <a>Reset </a>
+              </li> */}
             </ul>
           </nav>
         </div>

@@ -1,7 +1,7 @@
 // import React from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import "../src/styles.css";
-import { fetchProducts } from "../servicescall";
+import { fetchProducts } from "./servicescall";
 
 const ProdList = () => {
   const [posts, setPosts] = useState([]);
