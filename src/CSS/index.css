@@ -163,7 +163,7 @@ button:focus-visible {
 .dashboard-sidebar {
   grid-area: sidebar;
   position: relative;
-  background-color: #e9dae1;
+  background-color: #f7f464;
   padding: 5px;
   max-height: 90dvh;
 }
